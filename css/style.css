@@ -1,0 +1,96 @@
+/* menu d'action utilisateur */
+.moodle-actionmenu[data-enhanced].show.nowrap-items .menu > li {
+    width : 100%;
+}
+
+/* menu d'action utilisateur :hover*/
+.jsenabled .usermenu .moodle-actionmenu.show .menu a:hover {
+    background-color: #6dcff6;
+    transition: background-color 0.1s ease-out;
+}
+
+/* Boite d’information du cours - accueil */
+.coursebox.clearfix.item {
+    min-height:350px;
+}
+
+/* fil d'ariane */
+ul.breadcrumb {
+    font-size: 0.9em;
+}
+
+
+/* connexion pop-up */
+.cd-user-modal-container .cd-switcher li {
+    width: 100% !important;
+}
+
+
+/* block login dans la homepage au widh 100% */
+.owl-item > .block_login .content {
+    max-width: none;
+    overflow-y: hidden !important;
+}
+
+/* Marketing Spot */
+#b-bottom #info-main #info-main1 .img-section {
+    background-color : #00a88e;
+}
+#b-bottom #info-main #info-main2 .img-section {
+    background-color : #6dcff6;
+}
+#b-bottom #info-main #info-main3 .img-section {
+    background-color : #f0af13;
+}
+
+
+/* Course Search Box */
+#page-site-index .box.mdl-align #coursesearch .coursesearchbox {
+    /*background-color: inherit; */
+}
+
+.coursesearchbox input[type="submit"] { 
+    /*background-color: inherit; !important; */
+}
+
+/* Social media links */
+#bottom-footer-wrapper .container-fluid .footer-right {
+    display: none;
+}
+
+/* bouton fleche à haut */
+#backTop {
+   /* background-color: inherit; */
+}
+
+
+/* Mensages d'alerte */
+.alert-success {
+    color: #f0af13;
+    background-color: #fffcd5;
+    border-color: #f0af13;
+}
+
+/* entete du blocks */
+#page-site-index .block .header {
+    /* background-color: inherit; */
+}
+
+/* Calandrier title calandrier */
+.block .minicalendar th abbr[title] {  
+    color: #00a88e;    
+}
+
+/* Calandrier week-end */
+.block .minicalendar td.weekend {
+    color: #c7a252;
+    background-color: #fffcd5;
+}
+
+/* block de optiones */
+.block .header {
+    border-left: 3px solid #00a88e;
+}
+
+
+
