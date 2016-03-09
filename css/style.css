@@ -81,16 +81,35 @@ ul.breadcrumb {
     color: #00a88e;    
 }
 
+/* Calandrier title calandrier homepage */
+#page-site-index .block .minicalendar abbr[title] {
+    color: #00a88e;  
+}
+
+
 /* Calandrier week-end */
 .block .minicalendar td.weekend {
-    color: #c7a252;
-    background-color: #fffcd5;
+    color: #c7a252;    
 }
 
 /* block de optiones */
-.block .header {
+#page .block .header {
     border-left: 3px solid #00a88e;
 }
 
+/* block de navigation */
+#page aside#block-region-side-pre .block  {
+    border: 1px #F3F3F3 solid;    
+}
+
+/* block de navigation hover */
+#block-region-side-pre .block:hover {
+    background: rgba(0, 0, 0, 0.02);
+    transition: all 0.3s ease;
+}
+    
+#dock .dockedtitle {
+    background-color: #00a88e;
+}
 
 
