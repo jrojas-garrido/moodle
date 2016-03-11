@@ -1,13 +1,45 @@
+<link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+
+/* body */
+body {
+    background: url("http://www.chumontreal.qc.ca/sites/default/files//bg-molecule-130206.jpg") scroll 51% top transparent !important;
+}
+
 /* menu d'action utilisateur */
 .moodle-actionmenu[data-enhanced].show.nowrap-items .menu > li {
     width : 100%;
 }
+
+#action-menu-0-menu {
+    background-color: #E7E7E7;
+}
+
+.moodle-actionmenu[data-enhanced].show .menu.align-tr-br{
+    padding: 0px !important;
+ }
+
+.cusMenu .moodle-actionmenu[data-enhanced].show .menu a {  
+    margin: 2px;
+}
+
 
 /* menu d'action utilisateur :hover*/
 .jsenabled .usermenu .moodle-actionmenu.show .menu a:hover {
     background-color: #6dcff6;
     transition: background-color 0.1s ease-out;
 }
+
+/* menu d'action utilisateur */
+.moodle-actionmenu[data-enhanced].show .menu {
+    background-color : #202628;
+}
+
+
+/* menu d'action utilisateur */
+.jsenabled .usermenu .moodle-actionmenu[data-enhanced] .menu-action-text {
+    display: inline;   
+}
+
 
 /* Boite d’information du cours - accueil */
 .coursebox.clearfix.item {
@@ -55,7 +87,7 @@ ul.breadcrumb {
 
 /* Social media links */
 #bottom-footer-wrapper .container-fluid .footer-right {
-    display: none;
+    display: inherit;
 }
 
 /* bouton fleche à haut */
@@ -112,4 +144,58 @@ ul.breadcrumb {
     background-color: #00a88e;
 }
 
+
+/* block border arrondi header */ 
+#page-site-index .block .header {
+    border-top-left-radius: 0; 
+    border-top-right-radius: 0; 
+    background-color: #00a88e;
+}
+
+/* block border arrondi content */ 
+#page-site-index .block .content {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+
+/* title block */
+#page-site-index .block .header h2 {
+    font-family: 'Raleway', sans-serif;
+    font-size:16px;
+    font-style:italic;
+    font-weight:bold;
+}    
+
+
+/* shadow */
+
+#page-site-index .block .content {
+    background-color: white;
+    -webkit-box-shadow: 0px 3px 13px #f0f0f0;
+    -moz-box-shadow: 0px 3px 13px #f0f0f0;
+    box-shadow: 0px 3px 13px #f0f0f0; 
+}
+
+
+
+/* iconos */
+.block .header .title h2:before {
+    color: #FFF;
+    display: block;
+    float: left;
+    font-family: FontAwesome;
+    margin-left: -0.5em;
+    margin-right: 0.5em;
+    text-align: center;
+    width: 2em;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.block_settings .header .title h2:before, .block_admin_bookmarks .header .title h2:before {
+    background-color: #004675;
+    content: "\f085";
+}
 
