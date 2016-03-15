@@ -41,6 +41,13 @@ if (right_to_left()) {
 }
 
 require_once(dirname(__FILE__).'/includes/df-values.php'); 
+
+$hasfacebook    = (empty($PAGE->theme->settings->facebook)) ? false : $PAGE->theme->settings->facebook;
+$hastwitter     = (empty($PAGE->theme->settings->twitter)) ? false : $PAGE->theme->settings->twitter;
+$hasgoogleplus  = (empty($PAGE->theme->settings->googleplus)) ? false : $PAGE->theme->settings->googleplus;
+$hasin  = (empty($PAGE->theme->settings->in)) ? false : $PAGE->theme->settings->in;
+$hasyoutube  = (empty($PAGE->theme->settings->youtube)) ? false : $PAGE->theme->settings->youtube;
+$copyright = (empty($PAGE->theme->settings->copyright)) ? false : $PAGE->theme->settings->copyright;
 	
 echo $OUTPUT->doctype() ?>
 <html <?php echo $OUTPUT->htmlattributes(); ?>>
@@ -290,8 +297,14 @@ Welcome Information
      	 
       <div id="bottom-footer-wrapper">
      	 <div class="container-fluid">
-	     	 <div class="footer-left">
-		     	 <p><b><?php echo $copyright; ?></b>&#169; 2016</p>
+	     	 <div class="footer-left">		     	 
+		     	 <ul class="footer-link-list">
+		     	 	<li><a class="footer-link" target="_blanck" href="http://www.chumontreal.qc.ca/enseignement-academie/direction-de-l-enseignement-et-de-l-academie-chum/nous-joindre"><img src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/list-black.png" alt="" />Nous joindre</a></li>
+		     	 	<li><a class="footer-link" target="_blanck" href="http://www.chumontreal.qc.ca/"><img src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/list-black.png" alt="" />Accueil général du CHUM</a></li>		     	 
+		     	 </ul>
+		     	 <p>Réalisé par l'Académie CHUM</p>
+		     	 <p class="chum-footer-copy"><b><?php echo $copyright; ?></b>&#169; 2016 CHUM - Tous droits réservés</p>
+				 
 	     	 </div>
 	     	 
 	     	 <div class="footer-middle">
@@ -313,16 +326,18 @@ Welcome Information
 		        <div class="socials">
 		        <ul class="socials unstyled">
 		          <?php if ($hasfacebook) { ?>
-		          <li><a href="<?php echo $hasfacebook; ?>"><img src="<?php echo $OUTPUT->pix_url('social/facebook', 'theme')?>" alt="facebook" /></a></li>
+		          <li><a href="<?php echo $hasfacebook; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_facebook', 'theme')?>" alt="facebook" /></a></li>
 		          <?php } ?>
 		          <?php if ($hastwitter) { ?>
-		          <li><a href="<?php echo $hastwitter; ?>"><img src="<?php echo $OUTPUT->pix_url('social/twitter', 'theme')?>" alt="twitter" /></a></li>
+		          <li><a href="<?php echo $hastwitter; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_twitter', 'theme')?>" alt="twitter" /></a></li>
 		          <?php } ?>
-		          <?php if ($hasgoogleplus) { ?>
-		          <li><a href="<?php echo $hasgoogleplus; ?>"><img src="<?php echo $OUTPUT->pix_url('social/googleplus', 'theme')?>" alt="googleplus" /></a></li>
+		          <?php if ($hasyoutube) { ?>
+		          <li><a href="<?php echo $hasyoutube; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_youtube', 'theme')?>" alt="Youtube" /></a></li>
 		          <?php } ?>
+		          <li><a href="https://www.flickr.com/photos/chumontreal" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_deuxrond', 'theme')?>" alt="flickr" /></a></li>
+		          <li><a href="http://www.chumontreal.qc.ca/rss.xml" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_echo', 'theme')?>" alt="RSS" /></a></li>		          
 		          <?php if ($hasin) { ?>
-		          <li><a href="<?php echo $hasin; ?>"><img src="<?php echo $OUTPUT->pix_url('social/in', 'theme')?>" alt="linked in" /></a></li>
+		          <li><a href="<?php echo $hasin; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_linkedin', 'theme')?>" alt="linked in" /></a></li>
 		          <?php } ?>
 		          
 		        </ul>
@@ -364,7 +379,15 @@ Welcome Information
   </script>
   
 
+<style>
+	
+    #bottom-footer-wrapper {
+    	background-image: url("<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/bg-footer.png");
+    	background-repeat: repeat-x;
+    	background-position-y: -3px;
+    }
 
+</style>
 
 </body>
 </html>
