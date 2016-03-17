@@ -200,7 +200,7 @@ if ($displayslidertext3) {
 	    $marketing1content = $PAGE->theme->settings->marketing1content;
 	} 
 	else {
-	    $marketing1content = 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text   => more';
+	    $marketing1content = 'Memito dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text   => more';
 	}
 
 	if (!empty($PAGE->theme->settings->marketing2content)) {

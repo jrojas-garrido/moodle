@@ -103,7 +103,9 @@ echo $OUTPUT->doctype() ?>
 	 });
 
 </script>
-    
+
+<!-- Style CHUM -->
+<link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/chumstyle.css">    
     
 </head>
 
@@ -211,7 +213,6 @@ echo $OUTPUT->doctype() ?>
 		          <li><a href="<?php echo $hasyoutube; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_youtube', 'theme')?>" alt="Youtube" /></a></li>
 		          <?php } ?>
 		          <li><a href="https://www.flickr.com/photos/chumontreal" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_deuxrond', 'theme')?>" alt="flickr" /></a></li>
-		          <li><a href="http://www.chumontreal.qc.ca/rss.xml" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_echo', 'theme')?>" alt="RSS" /></a></li>		          
 		          <?php if ($hasin) { ?>
 		          <li><a href="<?php echo $hasin; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_linkedin', 'theme')?>" alt="linked in" /></a></li>
 		          <?php } ?>
@@ -232,15 +233,6 @@ echo $OUTPUT->doctype() ?>
 
 </div>
 
-<style>
-
-    #bottom-footer-wrapper {
-        background-image: url("<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/bg-footer.png");
-        background-repeat: repeat-x;
-        background-position-y: -3px;
-    }
-
-</style>
 
 
 </body>

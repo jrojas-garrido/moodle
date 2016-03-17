@@ -78,20 +78,21 @@ echo $OUTPUT->doctype() ?>
 </style>
 
 
-    <!-- Css files for slider and crousal-->
+  <!-- Css files for slider and crousal-->
     
-    <link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/styles.css" media="all" />
+  <link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/styles.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/owl.carousel.css" media="all" />
 	<link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/style.css" media="all" />
 	
 	<!-- Js files for slider and crousal-->
 	
-     <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.min.js"></script>
-     <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.flexslider.js"></script>
-     <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/owl.carousel.js"></script>
-     <script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/modernizr.js"></script> <!-- Modernizr -->
+  <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.min.js"></script>
+  <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.flexslider.js"></script>
+  <script type="text/javascript" src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/owl.carousel.js"></script>
+  <script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/modernizr.js"></script> <!-- Modernizr -->
      
-
+  <!-- Style CHUM -->
+  <link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/chumstyle.css">
 
 </head>
 
@@ -102,7 +103,7 @@ echo $OUTPUT->doctype() ?>
 <header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
-            <div class="logo_section"><?php echo $OUTPUT->full_header(); ?></div>   
+            <div class="logo_section"><?php // echo $OUTPUT->full_header(); ?></div>   
             <div class="cusMenu offset3">    
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>
@@ -199,7 +200,6 @@ End Header Here
                   <li><a href="<?php echo $hasyoutube; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_youtube', 'theme')?>" alt="Youtube" /></a></li>
                   <?php } ?>
                   <li><a href="https://www.flickr.com/photos/chumontreal" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_deuxrond', 'theme')?>" alt="flickr" /></a></li>
-                  <li><a href="http://www.chumontreal.qc.ca/rss.xml" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_echo', 'theme')?>" alt="RSS" /></a></li>                
                   <?php if ($hasin) { ?>
                   <li><a href="<?php echo $hasin; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_linkedin', 'theme')?>" alt="linked in" /></a></li>
                   <?php } ?>
@@ -238,15 +238,7 @@ End Header Here
 
 
 
-<style>
 
-    #bottom-footer-wrapper {
-        background-image: url("<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/bg-footer.png");
-        background-repeat: repeat-x;
-        background-position-y: -3px;
-    }
-
-</style>
 
 </body>
 </html>

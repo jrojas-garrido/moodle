@@ -28,6 +28,14 @@
  * @license   http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
+
+if (!empty($CFG->loginpasswordautocomplete)) {
+    $autocomplete = 'autocomplete="off"';
+} else {
+    $autocomplete = '';
+}
+
+
 // Get the HTML for the settings bits.
 $html = theme_edusmart30_get_html_for_settings($OUTPUT, $PAGE);
 
@@ -63,6 +71,10 @@ echo $OUTPUT->doctype() ?>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='https://fonts.googleapis.com/css?family=Raleway:400,500' rel='stylesheet' type='text/css'>
+
+<!-- Style CHUM -->
+<link rel="stylesheet" type="text/css" href="<?php echo $CFG->wwwroot ?>/theme/edusmart30/css/chumstyle.css">
+
 </head>
 
 <body <?php echo $OUTPUT->body_attributes('two-column'); ?>>
@@ -76,7 +88,13 @@ Header Start Hrere
 <div role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
-            <div class="logo_section"><?php echo $OUTPUT->full_header(); ?></div>   
+            <div class="logo_section">
+                <div class="chum-logo">
+                  <a href="<?php echo $CFG->wwwroot ?>" class="chum-logo-imagen"></a>
+                  <h1>FORMATION CHUM</h1>
+                </div>
+              <div class="clearfix"></div>
+            </div>   
             <div class="cusMenu offset3"> 
                
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
@@ -123,7 +141,102 @@ Header Start Hrere
 End Header Here
  -->
  
- 
+<!--
+Formulario Login
+ -->
+
+<?php if(!isloggedin()){ ?>
+ 	<div class="chum-loginbox"> <!-- this is the entire modal form, including the background -->
+		<div class="chum-loginboxwrapper"> <!-- this is the container wrapper -->
+			<h2 class="chum-titre">Conexion</h2>
+			<ul class="cd-switcher">
+				<?php 
+                if (!empty($CFG->registerauth)) {
+                    $authplugin = get_auth_plugin($CFG->registerauth);	
+                    if ($authplugin->can_signup()) {	?>
+                        <li> <a href="#0">Créer un compte</a></li>
+                    <?php 
+                    } 
+                }?>
+			</ul>
+
+            <div id="chum-loginform"> <!-- log in form -->
+			    <?php
+                if(isset($_POST['username']) || isset($_POST['password'])){
+                    echo get_string("invalidlogin");
+                }else{
+                     //echo '<h2>'.get_string("login").'</h2>';
+                }
+    
+                if (!empty($errormsg)) {
+                    echo html_writer::start_tag('div', array('class' => 'loginerrors'));
+                    echo html_writer::link('#', $errormsg, array('id' => 'loginerrormessage', 'class' => 'accesshide'));
+                    echo $OUTPUT->error_text($errormsg);
+                    echo html_writer::end_tag('div');
+                } ?>
+                
+                <form action="<?php echo $CFG->httpswwwroot; ?>/login/index.php" method="post" class="cd-form" <?php echo $autocomplete; ?> >
+
+            	    <p class="fieldset">
+            			<label class="image-replace cd-username full-width has-padding has-border" for="signup-username"></label>
+            			<input type="text" class="username full-width has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Nom d'utilisateur">
+            			<span class="cd-error-message">Message d'erreur </span>
+            		</p>
+    
+            		<p class="fieldset">
+            		    <label class="image-replace cd-password" for="signin-password">Mot de passe</label>     		
+                        <input type="password" class="password full-width has-padding has-border full-width has-padding has-border" required="" name="password" id="signup-password" placeholder="Mot de passe" value="">   		
+                        <a href="#0" class="hide-password">Montrer</a>
+                        <span class="cd-error-message">Message d'erreur </span>
+            		</p>
+    
+                  	<p class="fieldset">
+            			<input type="checkbox" id="remember-me" checked>
+            			<label for="remember-me">Se souvenir du nom de l'utilisateur </label>
+            		</p>           
+                    <div class="clearfix"></div>
+          
+                    <?php 
+                    if (!right_to_left()) { ?>
+                        <button class="full-width" value="Login" onclick="checkuserdetail()">S'identifier</button>
+                    <?php } else { ?>
+                        <button class="full-width" value="Login">S'identifier</button>
+                    <?php } ?>
+                    <div style="clear:both;"></div>
+        
+                    <!-- <p class="cd-form-bottom-message"><a href="login/forgot_password.php" id="forgotten"><?php echo get_string('passwordforgotten'); ?></a></p> -->
+                </form>
+            </div> <!-- cd-login -->
+                    <div id="cd-signup"> <!-- sign up form -->
+            <?php 
+            if (!empty($CFG->registerauth)) {
+                $authplugin = get_auth_plugin($CFG->registerauth);	
+                $mform_signup = $authplugin->signup_form();
+                if ($authplugin->can_signup()) {	?>			           
+
+                        <?php
+                           //$mform_signup = $authplugin->signup_form();
+                           //http://localhost/moodle30/login/signup.php
+                           //require_once($CFG->dirroot.'/login/signup_form.php');
+                           $formurl = $CFG->httpswwwroot.'/login/signup.php';
+                           $mform_signup = new login_signup_form($formurl, null, 'post', '', array('autocomplete'=>'off'));
+                           $mform_signup->display(); 
+                        ?>
+                   
+				<?php 
+                } 
+            }?>
+             </div> <!-- cd-signup -->
+        </div>
+    </div>
+
+<?php } ?>
+
+ <!--
+End Formulario Login
+ -->
+
+
  
  <!--
 Banner Start Hrere
@@ -216,7 +329,7 @@ Welcome Information
 	<?php  if ($display_marketing_section) { ?>
 	
 		<div id="info-main1" class="span4">
-			<div class="img-section">
+			<div class="img-section chum-alveole" >
 			<?php echo $marketing1icon ?>
 			</div>
 			
@@ -228,7 +341,7 @@ Welcome Information
 		</div>
 		
 		<div id="info-main2" class="span4">
-			<div class="img-section">
+			<div class="img-section chum-alveole">
 			<?php echo $marketing2icon ?>
 			</div>
 			
@@ -240,7 +353,7 @@ Welcome Information
 		</div>
 		
 		<div id="info-main3" class="span4">
-			<div class="img-section">
+			<div class="img-section chum-alveole">
 			<?php echo $marketing3icon ?>
 			</div>
 			
@@ -269,7 +382,7 @@ Welcome Information
  
 
 
-<div id="page" class="container-fluid">
+    <div id="page" class="container-fluid">
 
             <?php
             echo $OUTPUT->course_content_header();
@@ -282,6 +395,16 @@ Welcome Information
   <!--
 	  Main Section End
  -->
+    <div class="container-fluid">
+        <div class="chum-divider">            
+        </div>
+    </div>
+
+    <div class="container-fluid">
+        <div class="span12">
+            <h2>LIENS RAPIDES</h2>
+        </div>
+    </div>
 
 <!--
 	  Footer Section
@@ -291,8 +414,9 @@ Welcome Information
     	<div class="container-fluid">
      	 <?php echo $OUTPUT->blocks('side-pre', $sidepre); ?>
      	 <?php //echo $OUTPUT->blocks('side-post', $sidepost); ?>
+
      	 </div>
-     	 
+     	  
      	 <div class="clearfix"></div>
      	 
       <div id="bottom-footer-wrapper">
@@ -335,7 +459,6 @@ Welcome Information
 		          <li><a href="<?php echo $hasyoutube; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_youtube', 'theme')?>" alt="Youtube" /></a></li>
 		          <?php } ?>
 		          <li><a href="https://www.flickr.com/photos/chumontreal" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_deuxrond', 'theme')?>" alt="flickr" /></a></li>
-		          <li><a href="http://www.chumontreal.qc.ca/rss.xml" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_echo', 'theme')?>" alt="RSS" /></a></li>		          
 		          <?php if ($hasin) { ?>
 		          <li><a href="<?php echo $hasin; ?>" target="_blank"><img src="<?php echo $OUTPUT->pix_url('social/social_linkedin', 'theme')?>" alt="linked in" /></a></li>
 		          <?php } ?>
@@ -379,15 +502,6 @@ Welcome Information
   </script>
   
 
-<style>
-	
-    #bottom-footer-wrapper {
-    	background-image: url("<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/bg-footer.png");
-    	background-repeat: repeat-x;
-    	background-position-y: -3px;
-    }
-
-</style>
 
 </body>
 </html>
