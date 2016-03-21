@@ -175,7 +175,13 @@ echo $OUTPUT->doctype() ?>
 <header role="banner" class="navbar navbar-fixed-top<?php echo $html->navbarclass ?> moodle-has-zindex">
     <nav role="navigation" class="navbar-inner">
         <div class="container-fluid">
-            <div class="logo_section"><?php // echo $OUTPUT->full_header(); ?></div>   
+			<div class="logo_section">
+                <div class="chum-logo">
+                  <a href="<?php echo $CFG->wwwroot ?>" class="chum-logo-imagen"></a>
+                  <h1><span>FORMATION CHUM</span></h1>
+                </div>
+              <div class="clearfix"></div>
+            </div>     
             <div class="cusMenu offset3">    
             <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
                 <span class="icon-bar"></span>

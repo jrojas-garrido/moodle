@@ -500,4 +500,12 @@ if ($ADMIN->fulltree) {
 	$setting = new admin_setting_configtext($name, $title, $description, $default);
 	$settings->add($setting);
 
+    //Youtube
+    $name = 'theme_edusmart30/matacho';
+    $title = get_string('youtube','theme_edusmart30');
+    $description = get_string('youtubedesc', 'theme_edusmart30');
+    $default = '';
+    $setting = new admin_setting_configtext($name, $title, $description, $default);
+    $settings->add($setting);
+
 }

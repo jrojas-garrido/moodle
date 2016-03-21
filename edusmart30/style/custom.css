@@ -1798,8 +1798,8 @@ input[type="submit"]:hover {
 	left : 62px;
 	height : 80px;
 	width : 40px;
-	border-top-right-radius : 50px;
-	border-bottom-right-radius : 50px;
+	/*border-top-right-radius : 50px;
+	border-bottom-right-radius : 50px;*/
 }
 .flex-direction-nav li a.flex-next:after {
 	background-color : #ff685a;
@@ -2974,8 +2974,8 @@ Button css End
 	left: 62px;
 	height: 80px;
 	width: 40px;
-	border-top-right-radius: 50px;
-	border-bottom-right-radius: 50px;
+/*	border-top-right-radius: 50px;
+	border-bottom-right-radius: 50px;*/
 }
 .flex-direction-nav li a.flex-next:after {
 	background-color:#ff685a;

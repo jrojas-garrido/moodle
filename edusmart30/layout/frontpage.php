@@ -91,7 +91,7 @@ Header Start Hrere
             <div class="logo_section">
                 <div class="chum-logo">
                   <a href="<?php echo $CFG->wwwroot ?>" class="chum-logo-imagen"></a>
-                  <h1>FORMATION CHUM</h1>
+                  <h1><span>FORMATION CHUM</span></h1>
                 </div>
               <div class="clearfix"></div>
             </div>   
@@ -111,25 +111,90 @@ Header Start Hrere
                 </ul>
             </div>
              
-             
-             
-<?php if(isloggedin()){ ?>
-                            
- <?php echo $OUTPUT->user_menu();  ?>
-                            
-	<?php if(isguestuser()){ ?>
-	
-	<a href="<?php echo new moodle_url('/login/index.php', array('sesskey'=>sesskey())), get_string('login') ?> "> <?php echo get_string('login') ?></a>	
-	
-	<?php }else{ ?>
-										
-	<?php } ?>
-											
-	<?php }else{ ?>	
+            
 
-	<?php require_once(dirname(__FILE__).'/includes/loginfo.php'); ?>  
-						
-<?php } ?>
+            <!-- Formulaire Chum Login -->
+
+            <?php if(!isloggedin()){ ?>              
+              <div class="chum-formulaire-login">
+                <div class ="chum-creer-compte">
+                  <?php 
+                    if (!empty($CFG->registerauth)) {
+                      $authplugin = get_auth_plugin($CFG->registerauth);  
+                      if ($authplugin->can_signup()) {  ?>
+                          <li> <a href="#0">Créer un compte</a></li>
+                      <?php 
+                      } 
+                  }?>
+                </div>
+
+                <div id="chum-loginform"> <!-- log in form -->
+                    <?php
+                        if(isset($_POST['username']) || isset($_POST['password'])){
+                            echo get_string("invalidlogin");
+                        }else{
+                             //echo '<h2>'.get_string("login").'</h2>';
+                        }
+            
+                        if (!empty($errormsg)) {
+                            echo html_writer::start_tag('div', array('class' => 'loginerrors'));
+                            echo html_writer::link('#', $errormsg, array('id' => 'loginerrormessage', 'class' => 'accesshide'));
+                            echo $OUTPUT->error_text($errormsg);
+                            echo html_writer::end_tag('div');
+                        } 
+                    ?>
+                        
+                    <form action="<?php echo $CFG->httpswwwroot; ?>/login/index.php" method="post" class="chum-cd-form" <?php echo $autocomplete; ?> >
+                        <p class="fieldset">
+                          <label class="image-replace cd-username  has-padding has-border" for="signup-username"><span>Nom d'utilisateur</span></label>
+                          <input type="text" class="username  has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Nom d'utilisateur">
+                          <span class="cd-error-message">Message d'erreur </span>
+                        </p>
+                        <p class="fieldset">
+                            <label class="image-replace cd-password" for="signin-password"><span>Mot de passe</span></label>         
+                                <input type="password" class="password  has-padding has-border  has-padding has-border" required="" name="password" id="signup-password" placeholder="Mot de passe" value="">       
+                                <!-- <a href="#0" class="hide-password">Montrer</a> -->
+                                <span class="cd-error-message">Message d'erreur </span>
+                        </p>
+                        <?php 
+                            if (!right_to_left()) { ?>
+                                <button class="chum-login-button" value="Login" onclick="checkuserdetail()"><span>go</span></button>
+                        <?php } else { ?>
+                                <button class="chum-login-button" value="Login">S'identifier 2</button>
+                        <?php } ?>
+                        <p class="fieldset" style="display:block">
+                          <input type="checkbox" id="remember-me" checked>
+                          <label for="remember-me">Se souvenir du nom de l'utilisateur </label>
+                        </p>
+                        <!-- <p class="cd-form-bottom-message"><a href="login/forgot_password.php" id="forgotten"><?php echo get_string('passwordforgotten'); ?></a></p> -->
+                    </form>
+                </div> <!-- cd-login -->
+              </div>
+            <?php } ?>   
+
+            <!-- End Formulaire Chum Login -->
+
+            <!-- Connexion -->
+             
+            <?php if(isloggedin()){ ?>
+                                        
+             <?php echo $OUTPUT->user_menu();  ?>
+                                        
+              <?php if(isguestuser()){ ?>
+              
+              <a href="<?php echo new moodle_url('/login/index.php', array('sesskey'=>sesskey())), get_string('login') ?> "> <?php echo get_string('login') ?></a>  
+              
+              <?php }else{ ?>
+                                
+              <?php } ?>
+                                  
+              <?php }else{ ?> 
+
+              <?php require_once(dirname(__FILE__).'/includes/loginfo.php'); ?>  
+                        
+            <?php } ?>
+
+            <!-- End Connexion -->            
              
             </div>  <!--End cusMenu -->
             <div class="clearfix"></div>
@@ -141,101 +206,6 @@ Header Start Hrere
 End Header Here
  -->
  
-<!--
-Formulario Login
- -->
-
-<?php if(!isloggedin()){ ?>
- 	<div class="chum-loginbox"> <!-- this is the entire modal form, including the background -->
-		<div class="chum-loginboxwrapper"> <!-- this is the container wrapper -->
-			<h2 class="chum-titre">Conexion</h2>
-			<ul class="cd-switcher">
-				<?php 
-                if (!empty($CFG->registerauth)) {
-                    $authplugin = get_auth_plugin($CFG->registerauth);	
-                    if ($authplugin->can_signup()) {	?>
-                        <li> <a href="#0">Créer un compte</a></li>
-                    <?php 
-                    } 
-                }?>
-			</ul>
-
-            <div id="chum-loginform"> <!-- log in form -->
-			    <?php
-                if(isset($_POST['username']) || isset($_POST['password'])){
-                    echo get_string("invalidlogin");
-                }else{
-                     //echo '<h2>'.get_string("login").'</h2>';
-                }
-    
-                if (!empty($errormsg)) {
-                    echo html_writer::start_tag('div', array('class' => 'loginerrors'));
-                    echo html_writer::link('#', $errormsg, array('id' => 'loginerrormessage', 'class' => 'accesshide'));
-                    echo $OUTPUT->error_text($errormsg);
-                    echo html_writer::end_tag('div');
-                } ?>
-                
-                <form action="<?php echo $CFG->httpswwwroot; ?>/login/index.php" method="post" class="cd-form" <?php echo $autocomplete; ?> >
-
-            	    <p class="fieldset">
-            			<label class="image-replace cd-username full-width has-padding has-border" for="signup-username"></label>
-            			<input type="text" class="username full-width has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Nom d'utilisateur">
-            			<span class="cd-error-message">Message d'erreur </span>
-            		</p>
-    
-            		<p class="fieldset">
-            		    <label class="image-replace cd-password" for="signin-password">Mot de passe</label>     		
-                        <input type="password" class="password full-width has-padding has-border full-width has-padding has-border" required="" name="password" id="signup-password" placeholder="Mot de passe" value="">   		
-                        <a href="#0" class="hide-password">Montrer</a>
-                        <span class="cd-error-message">Message d'erreur </span>
-            		</p>
-    
-                  	<p class="fieldset">
-            			<input type="checkbox" id="remember-me" checked>
-            			<label for="remember-me">Se souvenir du nom de l'utilisateur </label>
-            		</p>           
-                    <div class="clearfix"></div>
-          
-                    <?php 
-                    if (!right_to_left()) { ?>
-                        <button class="full-width" value="Login" onclick="checkuserdetail()">S'identifier</button>
-                    <?php } else { ?>
-                        <button class="full-width" value="Login">S'identifier</button>
-                    <?php } ?>
-                    <div style="clear:both;"></div>
-        
-                    <!-- <p class="cd-form-bottom-message"><a href="login/forgot_password.php" id="forgotten"><?php echo get_string('passwordforgotten'); ?></a></p> -->
-                </form>
-            </div> <!-- cd-login -->
-                    <div id="cd-signup"> <!-- sign up form -->
-            <?php 
-            if (!empty($CFG->registerauth)) {
-                $authplugin = get_auth_plugin($CFG->registerauth);	
-                $mform_signup = $authplugin->signup_form();
-                if ($authplugin->can_signup()) {	?>			           
-
-                        <?php
-                           //$mform_signup = $authplugin->signup_form();
-                           //http://localhost/moodle30/login/signup.php
-                           //require_once($CFG->dirroot.'/login/signup_form.php');
-                           $formurl = $CFG->httpswwwroot.'/login/signup.php';
-                           $mform_signup = new login_signup_form($formurl, null, 'post', '', array('autocomplete'=>'off'));
-                           $mform_signup->display(); 
-                        ?>
-                   
-				<?php 
-                } 
-            }?>
-             </div> <!-- cd-signup -->
-        </div>
-    </div>
-
-<?php } ?>
-
- <!--
-End Formulario Login
- -->
-
 
  
  <!--
@@ -487,20 +457,6 @@ Welcome Information
 
 
 
-<script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/main.js"></script> <!-- Gem jQuery -->
-<a id='backTop' href="#"><img src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/backtotop.png" alt="" /></a>
-<script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.backTop.min.js"></script> <!-- Modernizr -->
-<script>
-       $(document).ready( function() {
-	       $('#backTop').backTop({
-	        'position' : 1600,
-	        'speed' : 500,
-	        'color' : 'red',
-            
-            });		
-       });
-  </script>
-  
 
 
 </body>
