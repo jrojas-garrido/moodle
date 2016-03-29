@@ -177,8 +177,8 @@ echo $OUTPUT->doctype() ?>
         <div class="container-fluid">
 			<div class="logo_section">
                 <div class="chum-logo">
-                  <a href="<?php echo $CFG->wwwroot ?>" class="chum-logo-imagen"></a>
-                  <h1><span>FORMATION CHUM</span></h1>
+                   <a href="<?php echo $CFG->wwwroot ?>/?redirect=0"><span class="chum-logo-imagen"></span><h1><span>FORMATION CHUM</span></h1></a>
+                  
                 </div>
               <div class="clearfix"></div>
             </div>     

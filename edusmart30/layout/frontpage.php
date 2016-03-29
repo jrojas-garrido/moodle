@@ -90,8 +90,8 @@ Header Start Hrere
         <div class="container-fluid">
             <div class="logo_section">
                 <div class="chum-logo">
-                  <a href="<?php echo $CFG->wwwroot ?>" class="chum-logo-imagen"></a>
-                  <h1><span>FORMATION CHUM</span></h1>
+                  <a href="<?php echo $CFG->wwwroot ?>/?redirect=0"><span class="chum-logo-imagen"></span><h1><span>FORMATION CHUM</span></h1></a>
+                  
                 </div>
               <div class="clearfix"></div>
             </div>   
@@ -146,8 +146,8 @@ Header Start Hrere
                         
                     <form action="<?php echo $CFG->httpswwwroot; ?>/login/index.php" method="post" class="chum-cd-form" <?php echo $autocomplete; ?> >
                         <p class="fieldset">
-                          <label class="image-replace cd-username  has-padding has-border" for="signup-username"><span>Nom d'utilisateur</span></label>
-                          <input type="text" class="username  has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Nom d'utilisateur">
+                          <label class="image-replace cd-username  has-padding has-border" for="signup-username"><span>Code P</span></label>
+                          <input type="text" class="username  has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Code P">
                           <span class="cd-error-message">Message d'erreur </span>
                         </p>
                         <p class="fieldset">
@@ -352,7 +352,7 @@ Welcome Information
  
 
 
-    <div id="page" class="container-fluid">
+    <div id="page" class="container-fluid chum-hp-cours">
 
             <?php
             echo $OUTPUT->course_content_header();
@@ -456,6 +456,21 @@ Welcome Information
 
 
 
+
+<script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/main.js"></script> <!-- Gem jQuery -->
+<a id='backTop' href="#"><img src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/pix/images/backtotop.png" alt="" /></a>
+<script src="<?php echo $CFG->wwwroot ?>/theme/edusmart30/javascript/jquery.backTop.min.js"></script> <!-- Modernizr -->
+<script>
+       $(document).ready( function() {
+         $('#backTop').backTop({
+          'position' : 1600,
+          'speed' : 500,
+          'color' : 'red',
+            
+            });   
+       });
+  </script>
+  
 
 
 

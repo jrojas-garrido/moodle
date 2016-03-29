@@ -46,7 +46,7 @@ if (!empty($CFG->loginpasswordautocomplete)) {
 
             	    <p class="fieldset">
             			<label class="image-replace cd-username full-width has-padding has-border" for="signup-username"></label>
-            			<input type="text" class="username full-width has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Nom d'utilisateur">
+            			<input type="text" class="username full-width has-padding has-border username" required="" name="username" id="signup-username" value="" placeholder="Code P">
             			<span class="cd-error-message">Message d'erreur </span>
             		</p>
     

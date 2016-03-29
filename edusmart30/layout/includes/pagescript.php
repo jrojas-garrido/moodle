@@ -8,8 +8,8 @@ $(document).ready(function(){
 		$( ".nav .divider" ).remove();
 		var mydiv = $('.box.mdl-align #coursesearch .coursesearchbox label').html();
 
-		$('.box.mdl-align #coursesearch .coursesearchbox label').html('');
-		$("#shortsearchbox").attr("placeholder", "Search Course");
+		$('.box.mdl-align #coursesearch .coursesearchbox label').html('<i class="fa fa-search"></i>');
+		$("#shortsearchbox").attr("placeholder", "Rechercher des cours");
 		
 		$( ".block .content > .event a" ).first().addClass( "fltlft" );
 		
@@ -36,6 +36,7 @@ $(document).ready(function(){
 		$('.box.mdl-align #coursesearch .coursesearchbox').wrap($('<div class="wrapper">'));
 		$('#page div #frontpage-course-list .frontpage-course-list-all').addClass('owl-carousel');
 		$('#page div #frontpage-course-list div > div').addClass('item');
+		
 		
 		$(document.body).addClass('moreThenthree');
 			
